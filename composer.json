@@ -1,5 +1,5 @@
 {
-    "name": "laravel-admin-ext/reporter",
+    "name": "mikha-dev/reporter",
     "description": "Exception reporter for laravel",
     "type": "library",
     "keywords": ["laravel-admin", "exception", "reporter"],
