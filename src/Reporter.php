@@ -2,6 +2,7 @@
 
 namespace Encore\Admin\Reporter;
 
+use Illuminate\Support\Arr;
 use Encore\Admin\Extension;
 use Illuminate\Http\Request;
 
@@ -43,16 +44,17 @@ class Reporter extends Extension
      */
     public function reportException(\Exception $exception)
     {
+
         $data = [
 
             // Request info.
             'method'    => $this->request->getMethod(),
             'ip'        => $this->request->getClientIps(),
             'path'      => $this->request->path(),
-            'query'     => array_except($this->request->all(), ['_pjax', '_token', '_method', '_previous_']),
+            'query'     => Arr::except($this->request->all(), ['_pjax', '_token', '_method', '_previous_']),
             'body'      => $this->request->getContent(),
             'cookies'   => $this->request->cookies->all(),
-            'headers'   => array_except($this->request->headers->all(), 'cookie'),
+            'headers'   => Arr::except($this->request->headers->all(), 'cookie'),
 
             // Exception info.
             'exception' => get_class($exception),
